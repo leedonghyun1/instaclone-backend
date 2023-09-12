@@ -4,7 +4,6 @@ Instaclone Backend
 
 
 ##User:
-
 - [x] Create Account
 - [x] See Profile
 - [x] Login
@@ -14,12 +13,25 @@ Instaclone Backend
 - [x] Unfollow User
 - [x] See Followers
 - [x] See Following
+- [x] Search Users
 
 
 ##Photo:
+- [x] Upload Photo(Parse#)
+- [x] See Photo
+- [x] See Hashtags
+- [x] Search Photos
+- [x] Edit Photo
+- [x] Like / Unlike Photo
+- [x] See Photo Likes
+- [x] See Feed
+- [] See Photo Comments
+- [] Is Mine ( Delete Photo )
 
-- [] See Photo
-- [] Upload Photo
-- [] Edit Photo
-- [] Like / Unlike Photo
-- [] See Photo Likes
+##Comments:
+- [] Comment on Photo
+- [] Edit Comment
+- [] Delete Comment
+- [] Is Mine ( Delete Comment )
+
+

@@ -15,4 +15,5 @@ type Mutation{
   avatar:Upload
   password:String):editProfileResult!
 }
+scalar Upload
 `
