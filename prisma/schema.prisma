@@ -26,11 +26,13 @@ model User{
   comments Comment[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  rooms Room[]
+  messages Message[]
 }
 
 model Photo{
   id Int @id @default(autoincrement())
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId Int
   file String
   caption String?
@@ -51,8 +53,8 @@ model Hashtag{
 
 model Like {
   id Int @id @default(autoincrement())
-  photo Photo @relation(fields: [photoId], references: [id])
-  user User @relation(fields: [userId], references: [id])
+  photo Photo @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId Int
@@ -63,11 +65,31 @@ model Like {
 
 model Comment {
   id Int @id @default(autoincrement())
-  user User @relation(fields: [userId], references: [id])
-  photo Photo @relation(fields: [photoId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  photo Photo @relation(fields: [photoId], references: [id], onDelete: Cascade)
   payload String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId Int
   photoId Int
+}
+
+model Room {
+  id Int @id @default(autoincrement())
+  users User[]
+  messages Message[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Message {
+  id Int @id @default(autoincrement())
+  payload String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  read Boolean @default(false)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  roomId Int
 }
