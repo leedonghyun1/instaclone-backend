@@ -28,7 +28,8 @@ export default {
         }
 
         const hashPassword = await bcrypt.hash(password, 10)
-        return client.user.create({
+
+        await client.user.create({
           data: {
             username,
             email,
@@ -36,9 +37,15 @@ export default {
             lastName,
             password: hashPassword,
           }
-        })
+        });
+        return {
+          ok:true,
+        }
       } catch(error) {
-        return error;
+        return {
+          ok:false,
+          error:"Can't create account."
+        }
       }
     },
   }
